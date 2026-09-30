@@ -1,0 +1,59 @@
+# Secrets — never commit this file
+.env
+*.env
+.env.*
+!.env.example
+
+# Recipient data, raw forms, logs, and generated output
+data/*.csv
+!data/recipients.sample.csv
+*.csv
+!data/recipients.sample.csv
+output/
+
+# Raw recruitment responses, sheets, and member lists
+*Responses*
+*responses*
+*Recruitment*
+*recruitment*
+aws_team_list*
+*Team List*
+
+# PDFs — all generated letters, preview PDFs, and private attachments
+*.pdf
+
+# Private assets & letterhead with real signatures
+assets/*.jpg
+assets/*.jpeg
+assets/letterhead.jpg
+
+# Internal PRD & SOP specifications
+offer-letter-automation-PRD-SOP.md
+letter-content-update.md
+*PRD*
+*SOP*
+
+# Local active configuration (use config/config.yaml.example as template)
+config/config.yaml
+!config/config.yaml.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+
+# Testing & coverage
+.coverage
+htmlcov/
+
+# Editor & OS metadata
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

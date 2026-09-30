@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      color: #1a1a1a;
+      background: #f4f6fa;
+      margin: 0;
+      padding: 30px 0;
+    }
+
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .header {
+      background: #232F3E;
+      padding: 28px 36px;
+      color: #ffffff;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .header p {
+      margin: 4px 0 0 0;
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    .body {
+      padding: 32px 36px;
+    }
+
+    .body p {
+      margin: 0 0 16px 0;
+      line-height: 1.7;
+      color: #333333;
+    }
+
+    .highlight {
+      color: #FF9900;
+      font-weight: 700;
+    }
+
+    .next-steps {
+      background: #f0f4ff;
+      border-left: 4px solid #232F3E;
+      border-radius: 4px;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .next-steps strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #232F3E;
+    }
+
+    .next-steps a {
+      color: #0066cc;
+    }
+
+    .footer {
+      padding: 20px 36px;
+      background: #f8f9fa;
+      border-top: 1px solid #e8e8e8;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    .footer strong {
+      display: block;
+      color: #232F3E;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>🎉 Congratulations, {{ first_name }}!</h1>
+      <p>{{ club_name }} · {{ college_name }}</p>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+      <p>Hi <strong>{{ first_name }}</strong>,</p>
+
+      <p>
+        Congratulations! We are happy to inform you that you have been selected as
+        <span class="highlight">{{ role_title }}</span> of the
+        <span class="highlight">{{ team }} Team</span> at
+        <strong>{{ club_name }}, {{ college_name }}</strong>.
+      </p>
+
+      <p>
+        Please find your <strong>Appointment Letter</strong> and the official <strong>Team List</strong> attached to this email.
+        This letter confirms your appointment for the academic year <strong>{{ academic_year }}</strong>.
+      </p>
+
+      <div class="next-steps">
+        <strong>📋 Next Steps:</strong>
+        <ol style="margin: 8px 0 0 0; padding-left: 20px; line-height: 1.7;">
+          <li style="margin-bottom: 8px;">
+            <strong>Share this achievement on LinkedIn</strong> and tag <strong>{{ club_name }}</strong> to celebrate with your network!
+          </li>
+          {% if onboarding_link %}
+          <li style="margin-bottom: 8px;">
+            <strong>Join the internal WhatsApp community</strong> (strictly confidential – please do not share this link with anyone else):<br>
+            <a href="{{ onboarding_link }}" target="_blank" rel="noopener noreferrer" style="word-break: break-all; color: #0066cc; font-weight: 600;">{{ onboarding_link }}</a>
+          </li>
+          {% endif %}
+          {% if merch_form_link %}
+          <li>
+            <strong>Fill out the Member Merch Form</strong> to get your official {{ club_name }} zipper hoodie with the club logo printed (exclusive for inducted members):<br>
+            <a href="{{ merch_form_link }}" target="_blank" rel="noopener noreferrer" style="word-break: break-all; color: #0066cc; font-weight: 600;">{{ merch_form_link }}</a>
+          </li>
+          {% endif %}
+        </ol>
+      </div>
+
+      <p>
+        We're excited to have you on board and look forward to your valuable contributions
+        to the {{ team }} Team. Welcome to the family!
+      </p>
+
+      <p>Warm regards,<br>
+        <strong>{{ issuer_name }}</strong><br>
+        {{ issuer_designation }}, {{ club_name }}
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <strong>{{ club_name }}</strong>
+      {{ college_name }}<br>
+      <span class="note">
+        This is an official appointment communication.
+      </span>
+    </div>
+
+  </div>
+</body>
+
+</html>

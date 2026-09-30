@@ -1,0 +1,65 @@
+club_name: "AWS Student Builder Group"
+college_name: "Your College / Institute Name"
+academic_year: "2026-27"
+issue_date: "auto"                   # "auto" = today, or e.g. "30 September 2026"
+
+# People
+issuer_name: "Club Lead Name"
+issuer_designation: "AWS Student Builder Group Leader"
+captain_name: "Club Lead Name"
+faculty_coordinator: "Prof. Faculty Coordinator"
+
+# Letter settings
+tenure: "1 year"
+reference_prefix: "AWSSBG-2026"
+print_closing: true                 # true: prints Warm regards, and club_name above signature
+team_list_pdf: ""                   # Optional additional PDF attachment (e.g. "team_list.pdf")
+
+# Closing text
+closing_line: "Warm regards,"
+
+# Lead/Co-Lead extra paragraph (role_title will be rendered inside)
+lead_addition: "As {{ role_title }}, you will also guide your team members, coordinate their tasks and report progress to the AWS Student Builder Group Leader and core committee."
+
+letterhead:
+  image: "assets/letterhead.png"
+  # Empty area of the design where the letter text goes (in mm, measured from page edges)
+  content_top_mm: 53
+  content_bottom_mm: 52
+  content_left_mm: 14
+  content_right_mm: 16
+  font_family: "Liberation Serif"
+  font_file_regular: ""
+  font_file_bold: ""
+  font_size_pt: 12.2
+  min_font_size_pt: 10
+  text_color: "#1a1a1a"
+
+email_subject: "Congratulations {{ first_name }}! You're selected for the {{ team }} Team"
+onboarding_link: "https://chat.whatsapp.com/YOUR_COMMUNITY_INVITE_LINK"
+onboarding_datetime: "TBD"
+merch_form_link: "https://forms.gle/YOUR_MERCH_FORM_LINK"
+
+# Teams: each entry needs a code (used in ref ID) and a responsibility paragraph
+teams:
+  Technical Writing:
+    code: "TW"
+    responsibility: "As part of the Technical Writing Team, your primary responsibility will be to create content related to AWS, including blogs and LinkedIn posts, to educate and engage the community. You will also help grow the club by increasing engagement across our platforms and strengthening our presence through quality content."
+  Website:
+    code: "WEB"
+    responsibility: "As part of the Website Team, you will help build the club's website, maintain it, keep its content up to date, and continuously improve its design, performance and usability."
+  Content Creation:
+    code: "CC"
+    responsibility: "As part of the Content Creation Team, your primary responsibility will be to create engaging digital content, including reels, videos, and social media posts, to showcase the club's activities and engage the student community. You will help bring club events and stories to life through compelling visual storytelling."
+  Graphics:
+    code: "GFX"
+    responsibility: "As part of the Graphics Team, your primary responsibility will be to design posters, social media creatives, banners, and other visual material that give the club a consistent, vibrant, and engaging visual identity."
+  Event & PR:
+    code: "EPR"
+    responsibility: "As part of the Event & PR Team, you will plan and run the club's workshops, sessions and community events, manage event logistics, and build relationships with speakers, partners, and the wider student community to ensure every event runs smoothly and makes an impact."
+  Event Management:
+    code: "EM"
+    responsibility: "As part of the Event Management Team, you will plan and run the club's workshops, sessions and community events, handling logistics, coordination with speakers and participants, and making sure every event runs smoothly."
+  Technical:
+    code: "TECH"
+    responsibility: "As part of the Technical Team, you will help conduct hands-on AWS sessions, build demos and projects, and support members in learning cloud technologies."

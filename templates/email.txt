@@ -1,0 +1,27 @@
+Congratulations, {{ first_name }}!
+
+Hi {{ first_name }},
+
+Congratulations! We are happy to inform you that you have been selected as
+{{ role_title }} of the {{ team }} Team at {{ club_name }}, {{ college_name }}.
+
+Please find your Appointment Letter and the official Team List attached to this email.
+This letter confirms your appointment for the academic year {{ academic_year }}.
+
+NEXT STEPS
+1. Share this achievement on LinkedIn tagging {{ club_name }}.
+{% if onboarding_link %}2. Join the internal WhatsApp community (strictly confidential - do not share to anyone else):
+   {{ onboarding_link }}
+{% endif %}{% if merch_form_link %}3. Fill out the Member Merch Form to get your official club zipper hoodie with the logo printed (exclusive for inducted members):
+   {{ merch_form_link }}
+{% endif %}
+
+We look forward to your valuable contribution and welcome you aboard!
+
+Regards,
+{{ issuer_name }}
+{{ issuer_designation }}, {{ club_name }}
+{{ college_name }}
+
+---
+This is an official appointment communication.

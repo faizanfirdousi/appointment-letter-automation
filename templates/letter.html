@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Letter – {{ name }}</title>
+  <style>
+    /* ── Page: full A4, no margin so letterhead fills perfectly ─────────── */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 210mm;
+      height: 297mm;
+    }
+
+    /* ── Outer page div: letterhead is the CSS background ───────────────── */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      {% if letterhead_uri %}
+      background: url("{{ letterhead_uri }}") no-repeat center / 100% 100%;
+      {% else %}
+      background: #ffffff;
+      {% endif %}
+    }
+
+    /* ── Content area: positioned over the empty part of the letterhead ── */
+    .content {
+      position: absolute;
+      top: {{ content_top_mm }}mm;
+      bottom: {{ content_bottom_mm }}mm;
+      left: {{ content_left_mm }}mm;
+      right: {{ content_right_mm }}mm;
+      overflow: hidden;                /* MUST NOT scroll — triggers font shrink logic */
+      font-family: "{{ font_family }}", "Liberation Serif", "Times New Roman", Georgia, serif;
+      font-size: {{ font_size_pt }}pt;
+      line-height: 1.58;
+      color: {{ text_color }};
+    }
+
+    /* ── Typography ──────────────────────────────────────────────────────── */
+    .date-line {
+      margin-bottom: 3.2em;            /* ~3-4 lines space above recipient name */
+    }
+    .recipient-name {
+      font-weight: 700;
+      font-size: calc({{ font_size_pt }}pt + 0.5pt);
+      margin-bottom: 1.2em;
+    }
+    p {
+      margin: 0 0 1.05em 0;
+      text-align: justify;
+    }
+    .closing-block {
+      margin-top: 1.2em;
+    }
+    .closing-block p {
+      margin: 0;
+      text-align: left;
+    }
+    .closing-line {
+      font-weight: 700;
+      margin-top: 0.9em !important;
+    }
+    .club-title {
+      font-weight: 700;
+    }
+
+    /* ── Debug guide box (only shown with --guides flag) ────────────────── */
+    {% if show_guides %}
+    .content {
+      outline: 2px solid red;
+      outline-offset: -1px;
+    }
+    .page::after {
+      content: "Content area";
+      position: absolute;
+      top: {{ content_top_mm }}mm;
+      left: {{ content_left_mm }}mm;
+      font-size: 8pt;
+      color: red;
+    }
+    {% endif %}
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="content">
+
+    <!-- DATE -->
+    <div class="date-line">{{ issue_date }}</div>
+
+    <!-- RECIPIENT NAME -->
+    <div class="recipient-name">{{ name }}</div>
+
+    <!-- BODY -->
+    <p>
+      We are pleased to inform you that you have been selected as {{ role_phrase }} the
+      {{ team }} Team of the {{ club_name }}. As part of the team, you will help plan,
+      organize and run the club's events, workshops and activities, work closely with
+      fellow members, and help build a welcoming, learning-focused community.
+    </p>
+
+    {% if role in ["Lead", "Co-Lead"] and lead_addition %}
+    <p>{{ lead_addition }}</p>
+    {% endif %}
+
+    <p>{{ responsibility }}</p>
+
+    <p>
+      This role is important to us. Each member has been carefully selected, and your work
+      will directly shape how the club shares knowledge and builds its community. Your
+      tenure will be {{ tenure }}. You will be working under the guidance of the
+      {{ issuer_designation }}, <u>{{ captain_name }}</u>, and under the supervision of Faculty
+      Coordinator, <u>{{ faculty_coordinator }}</u>. We look forward to your contribution.
+    </p>
+
+    <div class="closing-block">
+      <p>Welcome to the team.</p>
+      {% if print_closing %}
+      <p class="closing-line">{{ closing_line }}</p>
+      <p class="club-title">{{ club_name }}</p>
+      {% endif %}
+    </div>
+
+  </div><!-- /.content -->
+</div><!-- /.page -->
+</body>
+</html>

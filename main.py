@@ -223,8 +223,19 @@ def cmd_run(args: argparse.Namespace) -> int:
     else:
         _print("\n[LIVE SEND] Emails will be sent to recipients.\n", style="bold red")
 
-    # ── Build team counters for ref IDs ──
+    # ── Build team counters for ref IDs (pre-populate from existing log) ──
     team_counters: dict = {}
+    for entry in existing_log.values():
+        ref = entry.get("ref_id", "")
+        parts = ref.split("-")
+        if len(parts) >= 4 and parts[-1].isdigit():
+            t_code = parts[-2]
+            try:
+                num = int(parts[-1])
+                team_counters[t_code] = max(team_counters.get(t_code, 0), num)
+            except ValueError:
+                pass
+
 
     # ── Process each recipient ──
     for recipient in filtered:
